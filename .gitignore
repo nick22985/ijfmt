@@ -1,0 +1,23 @@
+/target
+
+# Private IntelliJ code style XMLs — add your own, do not commit
+tests/fmt/private/
+
+# Private fixture files — add your own, do not commit
+tests/fixtures/private/
+.claude/
+CLAUDE.md
+example-repos/
+
+# Local secrets and editor state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+.idea/workspace.xml
+.idea/shelf/
+.DS_Store

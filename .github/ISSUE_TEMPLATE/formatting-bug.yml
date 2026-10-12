@@ -1,0 +1,86 @@
+name: Formatting difference
+description: ijfmt's output differs from IntelliJ's for a Java file
+title: "Formatting: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every report becomes a fixture that is run against the full test suite, so the
+        original file is what matters most.
+
+        GitHub does not accept `.java` or `.xml` uploads. Rename files to `.txt`, zip
+        them, or paste them in a fenced code block.
+
+  - type: dropdown
+    id: style
+    attributes:
+      label: Code style
+      options:
+        - Bundled Sample.xml
+        - Bundled Default.xml
+        - My own style (attached below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input Java file
+      description: |
+        The complete file before any formatting, not a snippet. Attach it, or paste it
+        in a ```java block. Do not run it through ijfmt or IntelliJ first.
+    validations:
+      required: true
+
+  - type: textarea
+    id: style-xml
+    attributes:
+      label: Style XML
+      description: |
+        Only needed for your own style. In IntelliJ: Settings > Editor > Code Style >
+        Scheme gear icon > Export > IntelliJ IDEA code style XML.
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: IntelliJ output
+      description: |
+        The same file after Code > Reformat Code in IntelliJ with this style. Attach the
+        whole file if you can.
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ijfmt output or diff
+      description: What ijfmt produced, or `diff intellij.java ijfmt.java`.
+      render: diff
+    validations:
+      required: true
+
+  - type: input
+    id: command
+    attributes:
+      label: Command
+      placeholder: ijfmt --style Custom.xml --file Foo.java
+    validations:
+      required: true
+
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Output of `ijfmt --version`, and your IntelliJ IDEA version.
+      placeholder: ijfmt 0.1.0, IntelliJ IDEA 2026.2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Sharing
+      options:
+        - label: I have the right to share this code, and it may be added to ijfmt's public test fixtures.
+          required: true
+        - label: I removed secrets, credentials and personal data from the files.
+          required: true

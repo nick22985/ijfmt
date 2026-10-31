@@ -173,7 +173,7 @@ impl<'a> BlockBuilder<'a> {
             let sp = if let Some(pr) = ebd_prev_row {
                 let rg = ebd_child.start_position().row.saturating_sub(pr);
                 if ebd_child.kind() == ";" {
-                    let required_blanks = ebd_prev_member_cat.map(&blank_lines_for).unwrap_or(0);
+                    let required_blanks = ebd_prev_member_cat.map(blank_lines_for).unwrap_or(0);
                     let min_feeds = if required_blanks > 0 {
                         (1 + required_blanks) as u32
                     } else {

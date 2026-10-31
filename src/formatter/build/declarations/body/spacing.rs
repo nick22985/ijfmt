@@ -183,7 +183,7 @@ impl<'a> BlockBuilder<'a> {
                 let blanks = if matches!(pk, "block" | "static_initializer") {
                     self.cfg.blank_lines_around_initializer
                 } else {
-                    MemberCategory::from_kind(pk).map_or(0, &blank_lines_for)
+                    MemberCategory::from_kind(pk).map_or(0, blank_lines_for)
                 };
                 let preserved = if row_gap >= 2 {
                     row_gap.min(self.cfg.keep_blank_lines_in_declarations + 1) as u32
@@ -460,7 +460,7 @@ impl<'a> BlockBuilder<'a> {
                             .iter()
                             .find(|c| !c.is_extra())
                             .and_then(|c| MemberCategory::from_kind(c.kind()))
-                            .map_or(0, &blank_lines_for);
+                            .map_or(0, blank_lines_for);
                         (blank, true)
                     } else {
                         (0, false)
